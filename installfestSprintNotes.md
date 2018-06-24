@@ -1,6 +1,6 @@
 # Notes on The Odin Project Installfest
 
-This is a test run through The Odin Projects install fest located at <https://www.theodinproject.com/courses/web-development-101/lessons/installations>. I'm doing the installfest on a VM with Ubuntu 16.04 without running the first command from the installfest to determinate dependencies and which 
+This is a test run through The Odin Projects install fest located at <https://www.theodinproject.com/courses/web-development-101/lessons/installations>. I'm doing the installfest on a VM with Ubuntu 16.04 without running the first command from the installfest.
 
 ## Installation instructions
 
@@ -11,14 +11,13 @@ go through the installfest, WITHOUT running the large apt command at the start a
 
 ### Installation
 
-0. I ran sudo apt update and upgrade
-  This took a while but it's all ok I guess
+0. I ran sudo apt update and sudo apt upgrade
   
-1. Install packaged software and libraries. Worked as intended.
+1. Install packaged software and libraries
 
    Skipped this as instructed.
 
-2. Install Git. 
+2. Install Git
 
    After installing (sudo apt-get install git) git tried git --version. The output is : git version 2.7.4 . So I guess this is ok.
 
@@ -33,7 +32,7 @@ go through the installfest, WITHOUT running the large apt command at the start a
 
 
 
-   2. Configure your shell / verify.
+2. Configure your shell / verify.
 
       Worked as expected. Rvm version was right and 'rvm is a function'.
 
@@ -84,3 +83,6 @@ Worked as intended.
 12. Get a sticker.
 
     * There are no stickers. This is a critical issue that must be fixed. x 2
+
+
+CONCLUSION : Curl and NodeJs are required for the guide to work
