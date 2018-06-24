@@ -1,57 +1,50 @@
 # Notes on The Odin Project Installfest
 
-This is a test run through The Odin Projects install fest located at <https://www.theodinproject.com/courses/web-development-101/lessons/installations>.
+This is a test run through The Odin Projects install fest located at <https://www.theodinproject.com/courses/web-development-101/lessons/installations>. I'm doing the installfest on a VM with Ubuntu 16.04 without running the first command from the installfest to determinate dependencies and which 
 
-## System
+## Installation instructions
 
-* Processor: Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz, 2801 Mhz, 4 Core(s), 8 Logical Processor(s)
-* RAM: 16gb 2400MHz DDR4
-* HDD: 512GB SSD
-* OS: Windows 10
+Download Ubuntu 16.04LTS (the 64bit version): http://releases.ubuntu.com/16.04/
+install on virturalbox (so you can save the state)
+set up completely, (run sudo apt update and sudo apt upgrade first) but before starting the installfest. Create a snapshot of the VM (so you can revert back to a clean machine without re-installing.)
+go through the installfest, WITHOUT running the large apt command at the start and note what dependencies are missing and post it here: https://forum.theodinproject.com/t/ubuntu-16-04-lts-installfest-notes/6074 
 
-## Installation Procedure
+### Installation
 
-* Download Oracle VM Virtual Box from <https://www.virtualbox.org/> (5.2.12 64-bit)
-* Download Ubuntu 16.04 LTS from <https://www.ubuntu.com/download/alternative-downloads>
-* Configured VM Virtual Box with 8gb RAM and 10GB HDD
-* Configured Ubuntu to use ~8GB HDD for root and ~2gb for swap
-* Installed with complete updates to 2018-06-23
-* Took system snapshot after updating and before beginning installfest
-
-## Installfest
-
-I decided to take a few approaches to the installfest. The first installation I would move quickly, installing and taking notes as I went but capturing no terminal logs.
-
-I would like to say this was a thought out process but the truth is I started the first round of the installfest without remembering to capture a terminal log.
-
-I would fix errors as they arose and keep track of which areas I had the most difficulty with. Then I would roll back to the clean installation and run through the installfest a second time, capturing all logs and work around as I install. Finally, I would create my own installfest, using what I had learned from the previous attempts, and write out a thorough plan on how to complete the installfest with no errors.
-
-The numbered steps below will be the same steps as posted in the current installfest.
-
-### First Run
-
+0. I ran sudo apt update and upgrade
+  This took a while but it's all ok I guess
+  
 1. Install packaged software and libraries. Worked as intended.
 
-   * Found this strange as this was the step most people were having issues with. I had no issues installing any of the packages, no error messages, one message for confirmation of using more disk space. The only thing I can guess is I updated Ubuntu as I installed the OS and the installfest copy / paste skipped over files I had a newer version of. Also, this section would be a good time to remind people that paste in Linux is Ctrl-Shift-V
+   Skipped this as instructed.
 
-2. Install Git. Worked as intended.
+2. Install Git. 
 
-   * Nothing was installed or updated with this one, probably can be removed. 
+   After installing (sudo apt-get install git) git tried git --version. The output is : git version 2.7.4 . So I guess this is ok.
 
 3. RVM Installation.
-   1. Install RVM. Did not change terminal settings as recommended as not using the versions mentioned.
 
-       * First snag. The provided RVM installation does not work. Neither does the suggested step in the installfest. In the terminal there are two options of how to proceed: The first being the suggested step in the installfest. The second being to run the command `command curl -sSL https://rvm.io/mpapis.asc | gpg2 -- import -` which will end up working. However rvm.io suggests using the command `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB` which is different than any method listed so far. I will try running that on a future attempt.
+   1. Install RVM.
+   Checked the 'run command as login shell' in profile preferences.
+   
+   Tried to install RVM using the curl command, but since I did not run the first command of the guide, I do not have curl installed. So I got this error : The program 'curl' is currently not installed.
+   
+   I installed curl using the recommended command and ran the curl rvm installation command again, this time the installation started but I got an error just like the guide anticipated "GPG signature failed ...". I tried the recommended solution and ran "gpg2 --recv-keys ..." but I got another error saying : "gpg: keyserver receive failed: No keyserver available" then I tried the next recommended command "command curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -" after that I ran the curl command again to install rvm, the installation was successful and after restarting the terminal the result of rvm -v was : rvm 1.29.3(latest) by ...
+
+
 
    2. Configure your shell / verify.
 
-      * Did not return the expected `rvm is a function` instead returned the route to rvm. `rvm -v` also returned something different than expected, but close enough that most would be able to identify the change.
+      Worked as expected. Rvm version was right and 'rvm is a function'.
 
 4. Install Ruby
 
-   * It turns out running the terminal in shell mode is absolutely necessary for installing Ruby. Even though the steps for doing this are explained in Step 3 it's not stated as necessary for Ubuntu 16.04 LTS. Recommend either explicitly stating it or maybe there is another terminal we can install first?
+  Ran rvm install 2.5.1 (I assumed that's what I should test for, rather than the old version suggested by the guide)
+  Ruby was installed successfully without any issues. Ran rvm use and rvm default without any issues.
 
-5. Install Rails. Worked as intended.
+5. Install Rails. 
+   
+   No issues.
 
 6. Install Atom
 
@@ -66,22 +59,28 @@ The numbered steps below will be the same steps as posted in the current install
 
    I would suggest a section on editing programs, listing a few of the easy ones (Atom, Sublime, Notepad++ Visual Studios Code) with the explanation that it's time to learn how to read docs and find the best way to install their editor with the terminal. 
 
-7. Configure Git. Worked as intended.
+NOTE: I did not edit this part, as everything was the same and I agree with the suggestion. I would also like to add Ruby Mine to the list as it is awesome and can be free for students.
 
-8. Create an SSH key. Worked as intended.
+7. Configure Git. 
+
+Worked as intended.
+
+8. Create an SSH key. 
+
+Worked as intended.
 
 9. Create Heroku Account
 
    * Since we're trying to avoid snap we should make it apparent that they should not follow the first instructions seen on the page but, instead, use `curl https://cli-assets.heroku.com/install.sh | sh` to install Heroku CLI. Other than that, everything else seems to work as intended.
 
-10. Configure GitHub
+^ Christopher's stament. Edit: I installed it using snap, did not know I wasn't supposed to do that. It worked ok though
 
-    * In the installfest this is listed as an optional step. I know it isn't listed as such in tOP but maybe an explicit instruction that now is a good time to set it up since you have a freshly made SSH key and you remember how to use it?
 
-11. The Heroku App.
-
-    * When pushing the app to Heroku it becomes necessary to update rake with `gem install rake -v '12.3.1'`. There are also several warnings about the bundler being out of date. I suggest the entire section of installing RVM, ruby and Ruby on Rails needs to be re-written. Most of the issues that have ocurred have stemmed from the installation of RVM, or versioning issues with Ruby or Ruby on Rails and the bundles therein. 
+10. The Heroku App.
+  
+  Made the app, couldn't run it because of no Javascript runtime installed, after running sudo apt-get install nodejs everything worked ok
+   
 
 12. Get a sticker.
 
-    * There are no stickers. This is a critical issue that must be fixed.
+    * There are no stickers. This is a critical issue that must be fixed. x 2
